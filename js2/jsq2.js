@@ -13,35 +13,24 @@ document.getElementById('button').addEventListener('click', ()=> {
       document.querySelector('ul').remove(errorMessage);
     })
   }
+  if(fizz === '' || buzz === '') {
+    error();
+    return;
+  }
+  if(fizz.match(/\.d/) || buzz.match(/\.d/)) {
+    error();
+    return;
+  }
+  if(fizz.match(/[A-Za-z]/) || buzz.match(/[A-Za-z]/)) {
+    error();
+    return;
+  }
+
   for (let i = 1; i < 100; i++) {
-    if(fizz === '') {
-      error();
-      break;
-    }
-    if(buzz === '') {
-      error();
-      break;
-    } 
-    if(fizz.match(/\d\.d/)) {
-      error();
-      break;
-    }
-    if(buzz.match(/\d\.d/)) {
-      error();
-      break;
-    }
-    if(fizz.match(/[A-Za-z]/)) {
-      error();
-      break;
-    } 
-    if(buzz.match(/[A-Za-z]/)) { 
-      error();
-      break;
-    } 
     if((i % fizzNum === 0) && (i % buzzNum === 0)) {
       const fizzBuzzList = document.createElement('li');
       fizzBuzzList.textContent = `FizzBuzz ${i}`;
-      document.querySelector('ul').appendChild(fizzBuzzList)
+      document.querySelector('ul').appendChild(fizzBuzzList);
       document.getElementById('button').addEventListener('click', () => {
         document.querySelector('ul').removeChild(fizzBuzzList);
       })
