@@ -8,6 +8,9 @@ btn.addEventListener('click', ()=> {
   const isFizzInteger = fizz.match(/\d/g)
   const buzz = document.getElementById('buzz').value;
   const buzzNum = Number.parseFloat(buzz, 10);
+  while (ul.firstChild) {
+    ul.removeChild(ul.firstChild);
+  };
   const isBuzzInteger = buzz.match(/\d/g)
   const error = () => {
     while(ul.firstChild) {
@@ -17,14 +20,10 @@ btn.addEventListener('click', ()=> {
     errorMessage.textContent = '整数値を入力してください';
     ul.appendChild(errorMessage);
     }
-    
-    
-  if(isFizzInteger && isBuzzInteger) {
-    while(ul.firstChild) {
-      ul.removeChild(ul.firstChild);
-    };
+
+  if (isFizzInteger && isBuzzInteger) {
     for (let i = 1; i < 100; i++) {
-      if((i % fizzNum === 0) && (i % buzzNum === 0)) {
+      if ((i % fizzNum === 0) && (i % buzzNum === 0)) {
         const fizzBuzzList = document.createElement('li');
         fizzBuzzList.textContent = `FizzBuzz ${i}`;
         ul.appendChild(fizzBuzzList);
@@ -40,9 +39,6 @@ btn.addEventListener('click', ()=> {
       }
     };
   } else {
-    while(ul.firstChild) {
-      ul.removeChild(ul.firstChild);
-    };
     error();
     return;
   }
