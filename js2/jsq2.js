@@ -1,28 +1,45 @@
-'use strict'
+'use strict';
 
-document.getElementById('button').addEventListener('click', ()=>{
+const btn = document.getElementById('button');
+btn.addEventListener('click', ()=> {
   
-  const fizzNum = document.querySelector('input[name="fizzNum"]');
-  const buzzNum = document.querySelector('input[name="buzzNum"]');
-  
-  for (let i = 1; i < 100; i++){
-    if ((fizzNum.value === '') || (buzzNum.value === '') || (fizzNum.value.match(/[a-z]\.d/g)) || (buzzNum.value.match(/[a-z]\.d/g))) {
-      const errorMessage = document.createElement('li');
-      errorMessage.textContent = '整数値を入力してください';
-      document.querySelector('ul').appendChild(errorMessage);
-      break;
-    } else if(i % fizzNum.value === 0 && i % buzzNum.value === 0) {
-      const fizzBuzzList = document.createElement('li');
-      fizzBuzzList.textContent = 'FizzBuzz ' + i;
-      document.querySelector('ul').appendChild(fizzBuzzList)
-    } else if (i % buzzNum.value === 0) {
-      const buzzList = document.createElement('li');
-      buzzList.textContent= 'Buzz ' + i;
-      document.querySelector('ul').appendChild(buzzList); 
-    } else if (i % fizzNum.value === 0) {
-      const fizzList = document.createElement('li');
-      fizzList.textContent = 'Fizz ' + i;
-      document.querySelector('ul').appendChild(fizzList)
-    };
+  const fizz = document.getElementById('fizz').value;
+  const fizzNum = Number.parseFloat(fizz, 10);
+  const isFizzInteger = fizz.match(/\d/g)
+  const buzz = document.getElementById('buzz').value;
+  const buzzNum = Number.parseFloat(buzz, 10);
+  while (ul.firstChild) {
+    ul.removeChild(ul.firstChild);
   };
+  const isBuzzInteger = buzz.match(/\d/g)
+  const error = () => {
+    while(ul.firstChild) {
+      ul.removeChild(ul.firstChild);
+    };
+    const errorMessage = document.createElement('li');
+    errorMessage.textContent = '整数値を入力してください';
+    ul.appendChild(errorMessage);
+    }
+
+  if (isFizzInteger && isBuzzInteger) {
+    for (let i = 1; i < 100; i++) {
+      if ((i % fizzNum === 0) && (i % buzzNum === 0)) {
+        const fizzBuzzList = document.createElement('li');
+        fizzBuzzList.textContent = `FizzBuzz ${i}`;
+        ul.appendChild(fizzBuzzList);
+
+      } else if (i % buzzNum === 0) {
+        const buzzList = document.createElement('li');
+        buzzList.textContent = `Buzz ${i}`;
+        ul.appendChild(buzzList);
+      } else if (i % fizzNum === 0) {
+        const fizzList = document.createElement('li');
+        fizzList.textContent = `Fizz ${i}`;
+        ul.appendChild(fizzList);
+      }
+    };
+  } else {
+    error();
+    return;
+  }
 });
