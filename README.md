@@ -1,8 +1,7 @@
-#成果物名
-
+# 成果物名
 クリックでFizzBuzz
-URL: 
-Qiita: https://qiita.com/Ligayan/items/a80a105124796e7fe837
+<br>URL: 
+<br>Qiita: https://qiita.com/Ligayan/items/a80a105124796e7fe837
 
 # 概要/Overview
 二桁以内の数字を入力して、クリックすると、
