@@ -5,17 +5,13 @@ btn.addEventListener('click', ()=> {
   
   const fizz = document.getElementById('fizz').value;
   const fizzNum = Number.parseFloat(fizz, 10);
-  const isFizzInteger = fizz.match(/\d/g)
+  const isFizzInteger = fizz.match(/[1-9]/g)
   const buzz = document.getElementById('buzz').value;
   const buzzNum = Number.parseFloat(buzz, 10);
-  while (ul.firstChild) {
-    ul.removeChild(ul.firstChild);
-  };
-  const isBuzzInteger = buzz.match(/\d/g)
+  deleteAll();
+  const isBuzzInteger = buzz.match(/[1-9]/g)
   const error = () => {
-    while(ul.firstChild) {
-      ul.removeChild(ul.firstChild);
-    };
+    deleteAll();
     const errorMessage = document.createElement('li');
     errorMessage.textContent = '整数値を入力してください';
     ul.appendChild(errorMessage);
@@ -43,3 +39,8 @@ btn.addEventListener('click', ()=> {
     return;
   }
 });
+const deleteAll = () => {
+  while (ul.firstChild) {
+    ul.removeChild(ul.firstChild);
+  };
+}
